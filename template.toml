@@ -41,3 +41,4 @@ name = "rom_size"
 default = "4096"
 prompt = "Which ROM size do you want to use?"
 choices = ["2048", "4096"]
+
