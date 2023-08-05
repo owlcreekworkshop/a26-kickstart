@@ -20,21 +20,21 @@ reset:
 ; Courtesy: Andrew Davie
 ; See: https://forums.atariage.com/topic/27405-session-12-initialisation/
 ;
-    ldx #0                      ; Set X to 0
-    txa                         ; Set A to 0
+    ldx #0                      ; Set X to 0, loop counter
+    txa                         ; Set A to 0, value to use for initialization
 :
-    dex                         ; Decrement loop counter (Wraps to #$FF)
-    txs                         ; Update stack pointer
+    dex                         ; Decrement loop counter
+    txs                         ; Reset stack pointer
     pha                         ; Zero out value at stack address
     bne :-                      ; Loop until X is 0
 
     lda #2                      ; Enable VBLANK
     sta VBLANK
 
-;
-; Initialize program.
-;
 
+    ; 
+    ; Global program initialization can be performed here.
+    ;
 
 ;
 ; Main Loop
@@ -54,25 +54,25 @@ frame_start:
     sta VSYNC
 
 ;
-; Game Logic
+; VBLANK Logic Area
 ;
 
-    ; **** Logic ***
+    ; 37 scanlines for VBLANK allowing for ~2,812 machine cycles of work.
 
 ;
 ; VBLANK
 ;
 
 vblank_wait:
-    sta WSYNC
-    lda INTIM
-    bne vblank_wait
+    sta WSYNC                   ; Wait for scanline to finish.
+    lda INTIM                   ; Check if timer has elapsed?
+    bne vblank_wait             ; Stay in vblank_wait loop until the timer has elapsed.
 
-    lda #0
+    lda #0                      ; 
     sta VBLANK
 
 ;
-; Scanlines (NTSC)
+; Screen Rendering Kernel (NTSC, 192 scanlines)
 ;
     ldx #192
 :
@@ -91,10 +91,10 @@ vblank_wait:
     sta TIM64T                  ; 30 scanlines ((30 * 76) / 64)
 
 ;
-; Game Logic
+; Overscan Logic Area
 ;
 
-    ; **** Logic ***
+    ; 30 scanlines for overscan allowing for ~2,280 machine cycles of work.
 
 overscan_wait:
     sta WSYNC
