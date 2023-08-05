@@ -15,3 +15,9 @@ name = "rom_size"
 default = "2048"
 prompt = "Which ROM size do you want to use?"
 choices = ["2048", "4096"]
+
+[[variables]]
+name = "video_format"
+default = "NTSC"
+prompt = "Which video format do you want to use?"
+choices = ["NTSC", "PAL"]
