@@ -1,0 +1,23 @@
+name = "Atari 2600 ca65 Template"
+description = "A template project for building Atari 2600 2K/4K ROMs using ca65 and CMake."
+kickstart_version = 1
+
+directory = "{{project_name}}"
+
+[[variables]]
+name = "project_name"
+default = "my-a26-rom"
+prompt = "What is the name of this project?"
+validation = "^([a-zA-Z][a-zA-Z0-9_-]+)$"
+
+[[variables]]
+name = "rom_size"
+default = "2048"
+prompt = "Which ROM size do you want to use?"
+choices = ["2048", "4096"]
+
+[[variables]]
+name = "video_format"
+default = "NTSC"
+prompt = "Which video format do you want to use?"
+choices = ["NTSC", "PAL"]
