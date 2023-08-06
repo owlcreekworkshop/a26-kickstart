@@ -12,7 +12,7 @@ reset:
 ;
 ; Clear RAM, TIA registers, and initialize stack pointer.
 ;
-    ldx #0                      ; Set X to 0, loop counter
+    ldx #0                      ; Setup clear loop counter
     txa                         ; Set A to 0, value to use for initialization
 clear:
     dex                         ; Update loop counter
@@ -22,7 +22,6 @@ clear:
 
     lda #2                      ; Enable VBLANK
     sta VBLANK
-
 
     ;
     ; Global program initialization can be performed here.
@@ -69,12 +68,12 @@ vblank_wait:
 ;
 ; Screen Rendering Kernel (NTSC, 192 scanlines)
 ;
-    ldx #192                    ; Setup loop for 192 scanlines
+    ldx #192                    ; Setup kernel loop for 192 scanlines
 {%- else -%}
 ;
 ; Screen Rendering Kernel (PAL, 242 scanlines)
 ;
-    ldx #242                    ; Setup loop for 242 scanlines
+    ldx #242                    ; Setup kernel loop for 242 scanlines
 {%- endif %}
 kernel:
     sta WSYNC                   ; Wait for start of next scanline
