@@ -9,10 +9,10 @@ This is a [kickstart](https://github.com/Keats/kickstart) template project desig
 ## Table of Contents
 
 - [Features](#features)
-- [Layout](#layout)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
+- [Layout](#layout)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
@@ -20,48 +20,10 @@ This is a [kickstart](https://github.com/Keats/kickstart) template project desig
 
 ## Features
 
-- Basic project structure for organizing your Atari 2600 source code and assets.
+- Basic project structure for organizing your code and assets.
 - CMake toolchain for the ca65 assembler.
 - 2K and 4K ROM linker configuration options.
 - NTSC or PAL kernel options.
-
-## Layout
-
-The project structure is designed to help organize your source code and facilitate the build process using the ca65 assembler and CMake build system.
-
-```
-.
-├── build/
-├── src/
-│   └── main.asm
-├── a26.ld65.cfg
-├── a26.toolchain.cmake
-└── CMakeLists.txt
-```
-
-### build
-
-The `build` directory is used by the build system to store the intermediate and final output files generated during the build process. When you run CMake and `make`, the build artifacts such as object files and the final ROM will be created in this directory.
-
-### src
-
-The `src` directory contains the program source code. 
-
-### main.asm
-
-`main.asm` is a simple starter program that performs basic machine initialization, sets up the timing for the selected video format, and renders "color bars" to the screen.
-
-### a26.ld65.cfg
-
-The `a26.ld65.cfg` file is the ld65 memory map configuration file used to define the memory layout of your ROM. It determines how different sections of your code and data are placed in the final ROM image.
-
-### a26.toolchain.cmake
-
-The `a26.toolchain.cmake` file is a CMake toolchain configuration that specifies how to compile your code using the ca65 assembler and link it using ld65. 
-
-### CMakeLists.txt
-
-The `CMakeLists.txt` file is the main CMake configuration file for the project. You will need to modify this file if you add new assembly source files or if you want to customize the build process.
 
 ## Getting Started
 
@@ -114,6 +76,44 @@ make
 That's it! 
 
 You should have successfully built the starter template, resulting in a ROM file named `<project-name>.a26` located in the `build` directory. You can now test it using your preferred Atari 2600 emulator and start adding your game logic or application code to `main.asm`. 
+
+## Layout
+
+The project structure is designed to help organize your source code and facilitate the build process using the ca65 assembler and CMake build system.
+
+```
+.
+├── build/
+├── src/
+│   └── main.asm
+├── a26.ld65.cfg
+├── a26.toolchain.cmake
+└── CMakeLists.txt
+```
+
+### build
+
+The `build` directory is used by the build system to store the intermediate and final output files generated during the build process. When you run CMake and `make`, the build artifacts such as object files and the final ROM will be created in this directory.
+
+### src
+
+The `src` directory contains the program source code. 
+
+### main.asm
+
+`main.asm` is a simple starter program that performs basic machine initialization, sets up the timing for the selected video format, and renders "color bars" to the screen.
+
+### a26.ld65.cfg
+
+The `a26.ld65.cfg` file is the ld65 memory map configuration file used to define the memory layout of your ROM. It determines how different sections of your code and data are placed in the final ROM image.
+
+### a26.toolchain.cmake
+
+The `a26.toolchain.cmake` file is a CMake toolchain configuration that specifies how to compile your code using the ca65 assembler and link it using ld65. 
+
+### CMakeLists.txt
+
+The `CMakeLists.txt` file is the main CMake configuration file for the project. You will need to modify this file if you add new assembly source files or if you want to customize the build process.
 
 ## Contributing
 
