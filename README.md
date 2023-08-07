@@ -39,27 +39,27 @@ The project structure is designed to help organize your source code and facilita
 └── CMakeLists.txt
 ```
 
-### `build`
+#### `build`
 
 The `build` directory is used by the build system to store the intermediate and final output files generated during the build process. When you run CMake and `make`, the build artifacts such as object files and the final ROM will be created in this directory.
 
-### `src`
+#### `src`
 
 The `src` directory contains the program source code. 
 
-### `main.asm`
+#### `main.asm`
 
 `main.asm` is a simple starter program that performs basic machine initialization, sets up the timing for the selected video format, and renders "color bars" to the screen.
 
-### `a26.ld65.cfg`
+#### `a26.ld65.cfg`
 
 The `a26.ld65.cfg` file is the ld65 memory map configuration file used to define the memory layout of your ROM. It determines how different sections of your code and data are placed in the final ROM image.
 
-### `a26.toolchain.cmake`
+#### `a26.toolchain.cmake`
 
 The `a26.toolchain.cmake` file is a CMake toolchain configuration that specifies how to compile your code using the ca65 assembler and link it using ld65. 
 
-### `CMakeLists.txt`
+#### `CMakeLists.txt`
 
 The `CMakeLists.txt` file is the main CMake configuration file for the project. You will need to modify this file if you add new assembly source files or if you want to customize the build process.
 
