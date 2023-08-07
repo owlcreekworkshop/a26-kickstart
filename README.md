@@ -81,7 +81,7 @@ You will need the following tools:
 
 ### Usage
 
-<div style="margin: 1em">
+<div style="margin-top: 2em; margin-bottom: 2em">
 <img src="docs/images/demo.gif" alt="A terminal screen recording of the commands needed to create and build a new project from the template using the kickstart and CMake utilities.">
 </div>
 
