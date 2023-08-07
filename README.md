@@ -81,9 +81,9 @@ You will need the following tools:
 
 ### Usage
 
-<div style="margin-top: 2em; margin-bottom: 2em">
+<p align="center">
 <img src="docs/images/demo.gif" alt="A terminal screen recording of the commands needed to create and build a new project from the template using the kickstart and CMake utilities.">
-</div>
+</p>
 
 1. Use the `kickstart` utility to start the project generation process:
 
