@@ -32,6 +32,7 @@ clear:
 ; Main Loop
 ;
 frame_start:
+    sta WSYNC                   ; Wait for start of next scanline
     lda #2                      ; Enable VSYNC
     sta VSYNC
 
@@ -40,10 +41,10 @@ frame_start:
     sta TIM64T                  ; 40 scanlines ((3 + 37) * 76) / 64 = ~47
 
     sta WSYNC                   ; Second line of VSYNC
-    sta WSYNC                   ; Third line of VSYNC
+    lda #0                      ; Prepare to disable VSYNC
 
-    lda #0                      ; Disable VSYNC
-    sta VSYNC
+    sta WSYNC                   ; Third line of VSYNC
+    sta VSYNC                   ; Disable VSYNC
 
 ;
 ; VBLANK Logic Area
@@ -88,15 +89,18 @@ kernel:
     lda #2                      ; Enable VBLANK
     sta VBLANK
 
-    lda #36                     ; Setup timer for overscan duration
-    sta TIM64T                  ; 30 scanlines ((30 * 76) / 64) = ~36
+    lda #35                     ; Setup timer for overscan duration
+    sta TIM64T                  ; 29 scanlines ((30 * 76) / 64) = ~35
 
 ;
 ; Overscan Logic Area
 ;
 
     ;
-    ; 30 scanlines for overscan allowing for ~2,280 machine cycles of work.
+    ; 29 scanlines for overscan allowing for ~2,204 machine cycles of work.
+    ;
+    ; NOTE: We sacrified one of the 30 scanlines during overscan to the start 
+    ; of the VSYNC signal to allow for a more steady frame.
     ;
 
 overscan_wait:
