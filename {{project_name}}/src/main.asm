@@ -1,4 +1,5 @@
-.include "atari2600.inc"
+.include "tia.inc"
+.include "riot.inc"
 
 .segment "CODE"
 
