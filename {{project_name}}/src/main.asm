@@ -111,7 +111,7 @@ overscan_wait:
     .word reset
     .word reset
 
-.segment "DATA"
+.segment "RODATA"
 
     ;
     ; Reserve ROM space for data.
